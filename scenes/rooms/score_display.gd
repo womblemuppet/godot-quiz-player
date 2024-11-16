@@ -13,7 +13,9 @@ func _ready() -> void:
   deincrement_score_button = $DeincrementScoreButton
   increment_score_button.pressed.connect(increment_score)
   deincrement_score_button.pressed.connect(deincrement_score)
-
+  MainController.category_picker_opening.connect(on_category_picker_opening)
+  MainController.category_picker_closing.connect(on_category_picker_closing)
+  
 func initialise(position_arg, player_arg):
   set_as_top_level(true)
   set_position(position_arg)
@@ -35,4 +37,13 @@ func increment_score():
 func deincrement_score():
   var new_score = player.add_to_score(-1)
   score_label.text = str(new_score)
+  
+func on_category_picker_opening():
+  increment_score_button.disabled = true
+  deincrement_score_button.disabled = true
+  
+func on_category_picker_closing():
+  increment_score_button.disabled = false
+  deincrement_score_button.disabled = false
+  
   

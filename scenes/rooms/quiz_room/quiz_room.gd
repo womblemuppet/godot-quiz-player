@@ -15,6 +15,9 @@ func _ready() -> void:
 
   player_list_color_rect = $PlayerListColorRect
   
+  MainController.question_changed.connect(on_question_changed)
+  MainController.category_changed.connect(on_category_changed)
+  
   for i in range(MainController.players.size()):
     var player = MainController.players[i]
     
@@ -42,15 +45,11 @@ func _ready() -> void:
     
     add_child(new_score_display)
 
-  change_question_title_text(MainController.current_question.data().title)
-  change_question_info_text(MainController.current_question.data().info)
-  change_category_text(MainController.current_category.data().title)
+  MainController.show_category_picker()
     
-func change_question_title_text(text):
-  question_label.text = text
-  
-func change_category_text(text):
-  category_label.text = text
-  
-func change_question_info_text(text):
-  info_label.text = text
+func on_question_changed():  
+  question_label.text = MainController.current_question.title
+  category_label.text = MainController.current_question.info
+
+func on_category_changed():
+  info_label.text = MainController.current_category.title

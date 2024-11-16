@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmdhx5rfwwwe0"]
+[gd_scene load_steps=4 format=3 uid="uid://dmdhx5rfwwwe0"]
 
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/quiz_room.gd" id="1_coemx"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="2_7olu8"]
+[ext_resource type="Script" path="res://scenes/rooms/quiz_room/open_categories_button.gd" id="3_uv4v6"]
 
 [node name="QuizRoom" type="Node2D"]
 script = ExtResource("1_coemx")
@@ -55,3 +56,12 @@ offset_top = 800.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.93408, 0.93408, 0.93408, 1)
+
+[node name="OpenCategoriesButton" type="Button" parent="."]
+offset_left = 1777.0
+offset_top = 30.0
+offset_right = 1899.0
+offset_bottom = 171.0
+theme = ExtResource("2_7olu8")
+text = "↻"
+script = ExtResource("3_uv4v6")

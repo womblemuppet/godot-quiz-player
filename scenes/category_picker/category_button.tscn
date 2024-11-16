@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfxs7e514solq"]
+
+[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_yftjw"]
+[ext_resource type="Script" path="res://scenes/category_picker/category_button.gd" id="2_jgou4"]
+
+[node name="CategoryButton" type="Button"]
+z_index = 5
+offset_right = 373.0
+offset_bottom = 160.0
+theme = ExtResource("1_yftjw")
+theme_override_font_sizes/font_size = 40
+text = "test"
+autowrap_mode = 2
+script = ExtResource("2_jgou4")

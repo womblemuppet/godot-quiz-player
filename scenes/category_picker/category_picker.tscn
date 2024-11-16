@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hs7inq2qgsk"]
+
+[ext_resource type="Script" path="res://scenes/category_picker/category_picker.gd" id="1_1j57t"]
+[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_n318b"]
+
+[node name="CategoryPicker" type="CanvasLayer"]
+script = ExtResource("1_1j57t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1600.0
+offset_bottom = 800.0
+color = Color(0.762405, 0.762403, 0.762404, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 14.0
+offset_right = 1229.0
+offset_bottom = 144.0
+theme = ExtResource("1_n318b")
+theme_override_font_sizes/font_size = 80
+text = "Choose Category"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftPanelContainer" type="PanelContainer" parent="."]
+visible = false
+offset_left = 136.0
+offset_top = 192.0
+offset_right = 617.0
+offset_bottom = 689.0
+mouse_filter = 2
+
+[node name="RightPanelContainer" type="PanelContainer" parent="."]
+visible = false
+offset_left = 937.0
+offset_top = 190.0
+offset_right = 1416.0
+offset_bottom = 692.0
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 19.0
+offset_top = 641.0
+offset_right = 173.0
+offset_bottom = 782.0
+theme = ExtResource("1_n318b")
+text = "↩"

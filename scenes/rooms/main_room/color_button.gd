@@ -17,7 +17,6 @@ func _ready() -> void:
   self.pressed.connect(on_color_button_pressed)
   color_rect = $ColorRect
   add_button = $"../AddButton" # ..yup
-  print (add_button)
   update_color_rect_color()
   
   

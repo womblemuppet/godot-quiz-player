@@ -18,13 +18,13 @@ func initialise(question_data):
   
   return self
   
-func data():
-  return {
-    "answer": answer,
-    "hint": hint,
-    "info": info,
-    "number": number,
-    "picture": picture,
-    "title": title
-  }
-  
+#func data():
+  #return {
+    #"answer": answer,
+    #"hint": hint,
+    #"info": info,
+    #"number": number,
+    #"picture": picture,
+    #"title": title
+  #}
+  #
