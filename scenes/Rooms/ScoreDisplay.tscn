@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw8jns5kvnns8"]
+
+[ext_resource type="Script" path="res://scenes/Rooms/ScoreDisplay.gd" id="1_4qbud"]
+[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_shkey"]
+
+[node name="ScoreDisplay" type="Node2D"]
+script = ExtResource("1_4qbud")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 200.0
+offset_bottom = 100.0
+color = Color(0.92473, 0.9207, 0.93, 1)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 81.0
+offset_right = 127.0
+offset_bottom = 105.0
+theme = ExtResource("1_shkey")
+theme_override_font_sizes/font_size = 75
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IncrementScoreButton" type="Button" parent="."]
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 48.0
+theme = ExtResource("1_shkey")
+theme_override_font_sizes/font_size = 50
+
+[node name="PlusText" type="Label" parent="IncrementScoreButton"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 51.0
+theme = ExtResource("1_shkey")
+theme_override_font_sizes/font_size = 50
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeincrementScoreButton" type="Button" parent="."]
+offset_left = 148.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 48.0
+theme = ExtResource("1_shkey")
+theme_override_font_sizes/font_size = 50
+
+[node name="MinusText" type="Label" parent="DeincrementScoreButton"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = -22.0
+offset_right = 31.0
+offset_bottom = 49.0
+theme = ExtResource("1_shkey")
+theme_override_font_sizes/font_size = 50
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1

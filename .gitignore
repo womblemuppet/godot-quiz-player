@@ -1,0 +1,9 @@
+/android/
+.godot/
+
+.vscode/
+assets/questions.tres
+assets/categories.tres
+
+assets/COMIC.TTF
+assets/COMIC.TTF.import
