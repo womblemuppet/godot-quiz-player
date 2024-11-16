@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://di8bn6g7qpfia"]
 
-[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_ow1cc"]
-[ext_resource type="Script" path="res://scenes/Rooms/MainRoom/PlayerPicker.gd" id="2_kd6b6"]
-[ext_resource type="Script" path="res://scenes/Rooms/MainRoom/PlayButton.gd" id="3_b05bp"]
-[ext_resource type="StyleBox" uid="uid://cf6r4yjn5n8k8" path="res://assets/curved_rectangle.tres" id="3_e8yfw"]
-[ext_resource type="Script" path="res://scenes/Rooms/MainRoom/ColorButton.gd" id="3_lutrs"]
+[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_ypxv8"]
+[ext_resource type="Script" path="res://scenes/rooms/main_room/player_picker.gd" id="2_h52uo"]
+[ext_resource type="StyleBox" uid="uid://cf6r4yjn5n8k8" path="res://assets/curved_rectangle.tres" id="3_8xowo"]
+[ext_resource type="Script" path="res://scenes/rooms/main_room/color_button.gd" id="4_vhg0v"]
+[ext_resource type="Script" path="res://scenes/rooms/main_room/play_button.gd" id="5_rqs83"]
 
 [node name="MainRoom" type="Node2D"]
 
@@ -12,26 +12,26 @@
 z_index = -10
 offset_right = 1920.0
 offset_bottom = 1080.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 color = Color(0.93, 0.93, 0.93, 1)
 
 [node name="PlayerPicker" type="Node2D" parent="."]
 position = Vector2(65, 274)
-script = ExtResource("2_kd6b6")
+script = ExtResource("2_h52uo")
 
 [node name="ColorPanelContainer" type="PanelContainer" parent="PlayerPicker"]
 clip_contents = true
 offset_right = 549.0
 offset_bottom = 510.0
-theme = ExtResource("1_ow1cc")
-theme_override_styles/panel = ExtResource("3_e8yfw")
+theme = ExtResource("1_ypxv8")
+theme_override_styles/panel = ExtResource("3_8xowo")
 
 [node name="NameTextEdit" type="TextEdit" parent="PlayerPicker"]
 offset_left = 280.0
 offset_top = 70.0
 offset_right = 530.0
 offset_bottom = 145.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 placeholder_text = "Name"
 context_menu_enabled = false
 middle_mouse_paste_enabled = false
@@ -41,7 +41,7 @@ offset_left = 25.0
 offset_top = 68.0
 offset_right = 250.0
 offset_bottom = 293.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 text = "+"
 
 [node name="ColorTextEdit" type="TextEdit" parent="PlayerPicker"]
@@ -49,7 +49,7 @@ offset_left = 280.0
 offset_top = 160.0
 offset_right = 440.0
 offset_bottom = 235.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 placeholder_text = "Colour"
 editable = false
 
@@ -58,7 +58,7 @@ offset_left = 454.0
 offset_top = 160.0
 offset_right = 529.0
 offset_bottom = 235.0
-script = ExtResource("3_lutrs")
+script = ExtResource("4_vhg0v")
 
 [node name="ColorRect" type="ColorRect" parent="PlayerPicker/ColorButton"]
 layout_mode = 0
@@ -73,7 +73,7 @@ offset_left = 42.0
 offset_top = 26.0
 offset_right = 1284.0
 offset_bottom = 209.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 theme_override_font_sizes/font_size = 120
 text = "GUILTY GEAR QUIZ"
 
@@ -82,9 +82,9 @@ offset_left = 94.0
 offset_top = 869.0
 offset_right = 579.0
 offset_bottom = 1029.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 text = "Play"
-script = ExtResource("3_b05bp")
+script = ExtResource("5_rqs83")
 
 [node name="PlayerListColorRect" type="ColorRect" parent="."]
 z_index = -5
@@ -100,6 +100,6 @@ offset_left = 22.0
 offset_top = 60.0
 offset_right = 359.0
 offset_bottom = 167.0
-theme = ExtResource("1_ow1cc")
+theme = ExtResource("1_ypxv8")
 theme_override_font_sizes/font_size = 60
 text = "Contestants"

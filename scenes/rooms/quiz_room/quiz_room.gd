@@ -1,7 +1,7 @@
 extends Node
 
-var player_display_scene = preload("res://scenes/Rooms/PlayerDisplay.tscn")
-var score_display_scene = preload("res://scenes/Rooms/ScoreDisplay.tscn")
+var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
+var score_display_scene = preload("res://scenes/rooms/score_display.tscn")
 
 var question_label
 var info_label

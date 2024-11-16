@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cw8jns5kvnns8"]
 
-[ext_resource type="Script" path="res://scenes/Rooms/ScoreDisplay.gd" id="1_4qbud"]
+[ext_resource type="Script" path="res://scenes/rooms/score_display.gd" id="1_4qbud"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_shkey"]
 
 [node name="ScoreDisplay" type="Node2D"]

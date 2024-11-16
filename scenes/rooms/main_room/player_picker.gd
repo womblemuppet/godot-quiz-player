@@ -3,7 +3,7 @@ extends Node
 var add_button
 var color_button
 var name_text_edit
-var player_display_scene = preload("res://scenes/Rooms/PlayerDisplay.tscn")
+var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
 
 func _ready() -> void:
   add_button = $AddButton

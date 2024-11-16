@@ -13,9 +13,9 @@ func _ready() -> void:
   player_color_rect.color = player.get_color()
   
 
-func initialise(position, player_arg):
+func initialise(position_arg, player_arg):
   set_as_top_level(true)
-  set_position(position)
+  set_position(position_arg)
   player = player_arg
   return self
   

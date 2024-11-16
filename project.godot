@@ -10,15 +10,15 @@ config_version=5
 
 [application]
 
-config/name="guilty-gear-quiz-player"
-run/main_scene="res://scenes/Rooms/InitRoom.tscn"
+config/name="godot-quiz-player"
+run/main_scene="res://scenes/rooms/init_room.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-MainController="*res://scenes/Global/MainController.tscn"
-SpriteLoader="*res://scenes/Global/SpriteLoader.tscn"
+MainController="*res://scenes/global/main_controller.tscn"
+SpriteLoader="*res://scenes/global/sprite_loader.tscn"
 
 [display]
 

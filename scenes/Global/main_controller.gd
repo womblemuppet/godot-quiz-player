@@ -4,8 +4,8 @@ signal number_of_players_changed(new_number_of_players)
 
 var current_scene_instance
 
-var main_room_scene = preload("res://scenes/Rooms/MainRoom/MainRoom.tscn")
-var quiz_room_scene = preload("res://scenes/Rooms/QuizRoom/QuizRoom.tscn")
+var main_room_scene = preload("res://scenes/rooms/main_room/main_room.tscn")
+var quiz_room_scene = preload("res://scenes/rooms/quiz_room/quiz_room.tscn")
 var questions_resource = preload("res://assets/questions.tres")
 var categories_resource = preload("res://assets/categories.tres")
 
