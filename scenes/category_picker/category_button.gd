@@ -12,4 +12,5 @@ func initialise(category_arg):
   return self
 
 func on_category_button_pressed():
+  MainController.change_category(category)
   MainController.hide_category_picker()

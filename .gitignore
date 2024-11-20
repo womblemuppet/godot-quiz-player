@@ -2,8 +2,8 @@
 .godot/
 
 .vscode/
-assets/questions.tres
-assets/categories.tres
+assets/questions/
+assets/categories/
 
 assets/COMIC.TTF
 assets/COMIC.TTF.import

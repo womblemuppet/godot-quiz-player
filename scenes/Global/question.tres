@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://eflpsykas2d5"]
+
+[ext_resource type="Script" path="res://scenes/global/question.gd" id="1_ki7so"]
+
+[resource]
+script = ExtResource("1_ki7so")
+answer = ""
+hint = ""
+info = ""
+picture = ""
+title = ""

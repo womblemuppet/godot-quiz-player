@@ -7,6 +7,8 @@ var question_label
 var info_label
 var category_label
 var player_list_color_rect
+var previous_question_button
+var next_question_button
 
 func _ready() -> void:
   question_label = $QuestionLabel
@@ -15,8 +17,13 @@ func _ready() -> void:
 
   player_list_color_rect = $PlayerListColorRect
   
+  previous_question_button = $PreviousQuestionButton
+  next_question_button = $NextQuestionButton
+  
   MainController.question_changed.connect(on_question_changed)
   MainController.category_changed.connect(on_category_changed)
+  previous_question_button.pressed.connect(on_previous_question_pressed)
+  next_question_button.pressed.connect(on_next_question_pressed)
   
   for i in range(MainController.players.size()):
     var player = MainController.players[i]
@@ -45,11 +52,15 @@ func _ready() -> void:
     
     add_child(new_score_display)
 
-  MainController.show_category_picker()
-    
-func on_question_changed():  
-  question_label.text = MainController.current_question.title
-  category_label.text = MainController.current_question.info
+func on_question_changed(new_question):  
+  question_label.text = new_question.title
+  category_label.text = new_question.info
 
-func on_category_changed():
-  info_label.text = MainController.current_category.title
+func on_category_changed(new_category):
+  info_label.text = new_category.title
+
+func on_previous_question_pressed():
+  print("yasy")
+
+func on_next_question_pressed():
+  print("aERGH")

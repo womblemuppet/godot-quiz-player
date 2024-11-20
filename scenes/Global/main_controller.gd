@@ -12,17 +12,13 @@ var category_picker
 var main_room_scene = preload("res://scenes/rooms/main_room/main_room.tscn")
 var quiz_room_scene = preload("res://scenes/rooms/quiz_room/quiz_room.tscn")
 var category_picker_scene = preload("res://scenes/category_picker/category_picker.tscn")
-var questions_resource = preload("res://assets/questions.tres")
-var categories_resource = preload("res://assets/categories.tres")
 
 var players = []
-var questions = []
 var current_question = null
 var categories = []
 var current_category = null
 
 func _ready() -> void:
-  load_questions()
   load_categories()
   go_to_main_room()
   create_category_picker()
@@ -50,26 +46,55 @@ func add_player(player_data):
 
   return new_player
   
-func load_questions():
-  for question_data in questions_resource.data:
-    var new_question = Question.new().initialise(question_data)
-    add_child(new_question)
-    questions.append(new_question)
-  
 func load_categories():
-  for category_data in categories_resource.data:
-    var new_category = Category.new().initialise(category_data)
-    add_child(new_category)
-    categories.append(new_category)
+  for category_filename in DirAccess.get_files_at("res://assets/categories"):
+    var category_path = "res://assets/categories/" + category_filename
+    var new_category = load(category_path)
+    for i in range(new_category.questions.size()):
+      var question = new_category.questions[i]
+      question.number = i
+      
+    categories.push_front(new_category)
+
+
+  print(categories)
+  return
+  #categories = all_categories_resource.data
+  #for category_data in all_categories_resource.data:
+    #var new_category = Category.new().initialise(category_data)
+    #add_child(new_category)
+    #categories.append(new_category)
+#
+    #for i in range(category_data.questions.size()):
+      #var question_data = category_data.questions[i]
+      #var new_question = Question.new().initialise(question_data)
+      #new_question.number = i
+      #add_child(new_question)
+      #new_category.questions.append(new_question)
     
 func change_question(new_question):
   current_question = new_question
   question_changed.emit(new_question)
+  # sync to previous/next buttons based on number
 
-func change_category(new_category)
+func change_category(new_category):
   current_category = new_category
   category_changed.emit(new_category)
-  #current_question = new_category
+  change_question(new_category.questions[0])
+  
+func go_to_next_question():
+  pass
+  # get current question number
+  # 
+  
+func go_to_previous_question():
+  if current_question.number < 1:
+    assert(false, "calling previous question on 0")
+    return
+  
+  var new_index = current_question.number - 1
+  var new_question = current_category[new_index]
+  change_question(new_question)
     
 func create_category_picker():
   var new_category_picker = category_picker_scene.instantiate()

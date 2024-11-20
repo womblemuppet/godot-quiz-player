@@ -18,7 +18,7 @@ func _ready() -> void:
     else:
       new_category_button_x = right_panel_controller.position.x
     var new_category_button_y = left_panel_controller.position.y + 20 + floor(i / 2.0) * 250
-        
+
     new_category_button.position = Vector2(new_category_button_x, new_category_button_y)
     add_child(new_category_button)
 
