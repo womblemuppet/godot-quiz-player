@@ -22,8 +22,7 @@ func _ready() -> void:
   
   MainController.question_changed.connect(on_question_changed)
   MainController.category_changed.connect(on_category_changed)
-  previous_question_button.pressed.connect(on_previous_question_pressed)
-  next_question_button.pressed.connect(on_next_question_pressed)
+
   
   for i in range(MainController.players.size()):
     var player = MainController.players[i]
@@ -54,13 +53,8 @@ func _ready() -> void:
 
 func on_question_changed(new_question):  
   question_label.text = new_question.title
-  category_label.text = new_question.info
+  info_label.text = new_question.title
 
 func on_category_changed(new_category):
-  info_label.text = new_category.title
-
-func on_previous_question_pressed():
-  print("yasy")
-
-func on_next_question_pressed():
-  print("aERGH")
+  category_label.text = new_category.title
+  

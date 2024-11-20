@@ -53,29 +53,14 @@ func load_categories():
     for i in range(new_category.questions.size()):
       var question = new_category.questions[i]
       question.number = i
-      
+
     categories.push_front(new_category)
 
-
-  print(categories)
   return
-  #categories = all_categories_resource.data
-  #for category_data in all_categories_resource.data:
-    #var new_category = Category.new().initialise(category_data)
-    #add_child(new_category)
-    #categories.append(new_category)
-#
-    #for i in range(category_data.questions.size()):
-      #var question_data = category_data.questions[i]
-      #var new_question = Question.new().initialise(question_data)
-      #new_question.number = i
-      #add_child(new_question)
-      #new_category.questions.append(new_question)
     
 func change_question(new_question):
   current_question = new_question
   question_changed.emit(new_question)
-  # sync to previous/next buttons based on number
 
 func change_category(new_category):
   current_category = new_category
@@ -83,9 +68,13 @@ func change_category(new_category):
   change_question(new_category.questions[0])
   
 func go_to_next_question():
-  pass
-  # get current question number
-  # 
+  if current_question.number > current_category.questions.size():
+    assert(false, "calling next question past array limit")
+    return
+  
+  var new_index = current_question.number + 1
+  var new_question = current_category.questions[new_index]
+  change_question(new_question)
   
 func go_to_previous_question():
   if current_question.number < 1:
@@ -93,7 +82,7 @@ func go_to_previous_question():
     return
   
   var new_index = current_question.number - 1
-  var new_question = current_category[new_index]
+  var new_question = current_category.questions[new_index]
   change_question(new_question)
     
 func create_category_picker():

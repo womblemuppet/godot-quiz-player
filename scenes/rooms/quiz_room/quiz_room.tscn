@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmdhx5rfwwwe0"]
+[gd_scene load_steps=6 format=3 uid="uid://dmdhx5rfwwwe0"]
 
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/quiz_room.gd" id="1_coemx"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="2_7olu8"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/open_categories_button.gd" id="3_uv4v6"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/previous_question_button.gd" id="4_rj35b"]
+[ext_resource type="Script" path="res://scenes/rooms/quiz_room/next_question_button.gd" id="5_a56pm"]
 
 [node name="QuizRoom" type="Node2D"]
 script = ExtResource("1_coemx")
@@ -86,3 +87,4 @@ offset_bottom = 150.0
 theme = ExtResource("2_7olu8")
 theme_override_font_sizes/font_size = 80
 text = ">"
+script = ExtResource("5_a56pm")
