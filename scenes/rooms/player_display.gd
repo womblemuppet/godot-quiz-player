@@ -2,20 +2,17 @@ extends Node2D
 
 var player
 
-var player_color_rect
-var name_label
+@onready var player_color_rect = $PlayerColorRect
+@onready var name_label = $NameLabel
+@onready var answer_button = $AnswerButton
 
-func _ready() -> void:
-  name_label = $NameLabel
-  player_color_rect = $PlayerColorRect
+func initialise(position_arg, player_arg, disabled_arg):
+  set_as_top_level(true)
+  set_position(position_arg)
+  player = player_arg
+  answer_button.disabled = disabled_arg
   
   name_label.text = player.get_player_name()
   player_color_rect.color = player.get_color()
   
-
-func initialise(position_arg, player_arg):
-  set_as_top_level(true)
-  set_position(position_arg)
-  player = player_arg
   return self
-  

@@ -35,10 +35,11 @@ func on_add_button_pressed():
   var new_player_height = DisplayServer.window_get_size().y * 0.15 + (MainController.players.size() - 1) * 320
   
   var new_player_position = Vector2(new_player_width, new_player_height)
-  var new_player_display = player_display_scene.instantiate().initialise(
-    new_player_position,
-    new_player
+  var new_player_display = player_display_scene.instantiate()
+  new_player_display.ready.connect(
+    func(): new_player_display.initialise(new_player_position, new_player, true)
   )
+  
   add_child(new_player_display)
   
   reset_player_picker()
