@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 MainController="*res://scenes/global/main_controller.tscn"
-SpriteLoader="*res://scenes/global/sprite_loader.tscn"
 
 [display]
 

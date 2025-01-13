@@ -1,17 +1,16 @@
 extends Node
 
-var add_button
-var color_button
-var name_text_edit
+@onready var add_button = $AddButton
+@onready var color_button = $ColorButton
+@onready var name_text_edit = $NameTextEdit
+@onready var show_picture_picker_button = $PictureButton
+
 var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
+var picture_picker_scene = preload("res://scenes/picture_picker/picture_picker.tscn")
 
 func _ready() -> void:
-  add_button = $AddButton
-  color_button = $ColorButton
-  name_text_edit = $NameTextEdit
-  
   add_button.pressed.connect(on_add_button_pressed)
-  
+  show_picture_picker_button.pressed.connect(on_show_picture_picker_pressed)
   name_text_edit.text_changed.connect(check_form_validity)
   
   check_form_validity()
@@ -49,3 +48,10 @@ func reset_player_picker():
   color_button.reset_color()
   check_form_validity()
   
+func on_show_picture_picker_pressed():
+  var picture_picker = picture_picker_scene.instantiate()
+  #picture_picker.picture_chosen.connect(on_picture_chosen)
+  add_child(picture_picker)
+  
+#func on_picture_chosen(new_picture):
+  #print(new_picture)
