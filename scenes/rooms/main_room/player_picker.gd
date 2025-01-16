@@ -7,6 +7,8 @@ extends Node
 
 var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
 var picture_picker_scene = preload("res://scenes/picture_picker/picture_picker.tscn")
+var picture_picker
+var chosen_sprite
 
 func _ready() -> void:
   add_button.pressed.connect(on_add_button_pressed)
@@ -14,7 +16,6 @@ func _ready() -> void:
   name_text_edit.text_changed.connect(check_form_validity)
   
   check_form_validity()
-  
   
 func check_form_validity():
   add_button.disabled = (name_text_edit.text == "")
@@ -25,8 +26,10 @@ func on_add_button_pressed():
   
   var player_data = {
     "name": player_name,
-    "color": color
+    "color": color,
+    "sprite": chosen_sprite
   }
+  ## if chosen sprite null, what do?
   
   var new_player = MainController.add_player(player_data)
   
@@ -46,12 +49,10 @@ func on_add_button_pressed():
 func reset_player_picker():
   name_text_edit.text = ""
   color_button.reset_color()
+  chosen_sprite = null
   check_form_validity()
   
 func on_show_picture_picker_pressed():
-  var picture_picker = picture_picker_scene.instantiate()
-  #picture_picker.picture_chosen.connect(on_picture_chosen)
+  picture_picker = picture_picker_scene.instantiate()
+  picture_picker.initialise(self)
   add_child(picture_picker)
-  
-#func on_picture_chosen(new_picture):
-  #print(new_picture)

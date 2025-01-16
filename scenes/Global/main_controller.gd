@@ -2,6 +2,8 @@ extends Node2D
 
 signal number_of_players_changed(new_number_of_players)
 signal question_changed(new_question)
+the timer needs to NOT start when category changes? 
+revert what I just did and then think about it.
 signal category_changed(new_category)
 signal category_picker_opening
 signal category_picker_closing
@@ -58,14 +60,16 @@ func load_categories():
 
   return
     
-func change_question(new_question):
+func change_question(new_question, emit_signal):
   current_question = new_question
-  question_changed.emit(new_question)
+  
+  if emit_signal:
+    question_changed.emit(new_question)
 
 func change_category(new_category):
   current_category = new_category
   category_changed.emit(new_category)
-  change_question(new_category.questions[0])
+  change_question(new_category.questions[0], false)
   
 func go_to_next_question():
   if current_question.number > current_category.questions.size():
@@ -74,7 +78,7 @@ func go_to_next_question():
   
   var new_index = current_question.number + 1
   var new_question = current_category.questions[new_index]
-  change_question(new_question)
+  change_question(new_question, true)
   
 func go_to_previous_question():
   if current_question.number < 1:
@@ -83,7 +87,7 @@ func go_to_previous_question():
   
   var new_index = current_question.number - 1
   var new_question = current_category.questions[new_index]
-  change_question(new_question)
+  change_question(new_question, true)
     
 func create_category_picker():
   var new_category_picker = category_picker_scene.instantiate()

@@ -1,14 +1,17 @@
 extends Node
 
-#signal picture_chosen(new_picture)
+signal picture_chosen(new_picture)
 
 var sprite_catalogue = []
-var picture_display
+var chosen_sprite
 var picture_display_scene = preload("res://scenes/picture_picker/picture_display.tscn")
+var player_picker
 
 
 ## shouldn't load each time on _ready
 func _ready() -> void:
+  self.picture_chosen.connect(on_picture_chosen)
+  
   for relative_file_path in DirAccess.get_files_at("res://assets/avatars/"):
     if relative_file_path.ends_with(".import"):
       continue
@@ -29,3 +32,13 @@ func _ready() -> void:
     new_picture_display.position = Vector2(x, y)
 
     add_child(new_picture_display)
+    
+func initialise(player_picker_arg):
+  player_picker = player_picker_arg
+
+func on_picture_chosen(new_picture_index) -> void:
+  chosen_sprite = sprite_catalogue[new_picture_index]
+  player_picker.chosen_sprite = chosen_sprite
+  player_picker.picture_picker = null
+  queue_free()
+  

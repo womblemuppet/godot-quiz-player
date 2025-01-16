@@ -7,9 +7,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
   # is there a more efficient way of doing this than _process() ?
-  if timer.is_stopped():
-    text = ""
-  else:
+  if !timer.is_stopped():
     var time_left = round(timer.time_left)
     text = str(time_left) 
     
