@@ -10,4 +10,3 @@ func on_question_changed(new_question):
   
 func on_previous_question_button_pressed():
   MainController.go_to_previous_question()
-  

@@ -38,7 +38,7 @@ func initialise(player_picker_arg):
 
 func on_picture_chosen(new_picture_index) -> void:
   chosen_sprite = sprite_catalogue[new_picture_index]
-  player_picker.chosen_sprite = chosen_sprite
+  player_picker.set_chosen_sprite(chosen_sprite)
   player_picker.picture_picker = null
   queue_free()
   

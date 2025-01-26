@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b84rrwwmrt6wq"]
+
+[ext_resource type="Script" path="res://scenes/rooms/answer_display.gd" id="1_6spgj"]
+[ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_la7yq"]
+
+[node name="AnswerDisplay" type="ColorRect"]
+z_index = 20
+z_as_relative = false
+anchors_preset = -1
+offset_right = 1213.0
+offset_bottom = 685.0
+color = Color(1, 0.81, 0.81, 1)
+script = ExtResource("1_6spgj")
+
+[node name="ShowAnswerButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 419.0
+offset_right = 1052.0
+offset_bottom = 635.0
+theme = ExtResource("1_la7yq")
+text = "REVEAL ANSWER"
+
+[node name="AnswerConcealerColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 47.0
+offset_right = 975.0
+offset_bottom = 362.0
+
+[node name="AnswerLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 67.0
+offset_right = 938.0
+offset_bottom = 339.0

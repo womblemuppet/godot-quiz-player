@@ -1,16 +1,16 @@
 extends Node2D
 
 var player
-var score_label
-var color_rect
-var increment_score_button
-var deincrement_score_button
+@onready var score_label = $ScoreLabel
+@onready var color_rect = $ColorRect
+@onready var increment_score_button = $IncrementScoreButton
+@onready var deincrement_score_button = $DeincrementScoreButton
+@onready var buttons = [
+  increment_score_button,
+  deincrement_score_button
+]
 
 func _ready() -> void:
-  score_label = $ScoreLabel
-  color_rect = $ColorRect
-  increment_score_button = $IncrementScoreButton
-  deincrement_score_button = $DeincrementScoreButton
   increment_score_button.pressed.connect(increment_score)
   deincrement_score_button.pressed.connect(deincrement_score)
   MainController.category_picker_opening.connect(on_category_picker_opening)

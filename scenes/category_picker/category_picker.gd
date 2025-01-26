@@ -5,12 +5,22 @@ var category_button_scene = preload("res://scenes/category_picker/category_butto
 @onready var right_panel_controller = $RightPanelContainer
 @onready var close_button = $CloseButton
 
-func _ready() -> void:
+var signal_on_open
+var signal_on_close
+
+    
+func initialise(options):
+  offset = options.offset
+  signal_on_open = options.signal_on_open
+  signal_on_close = options.signal_on_close
+  
+  signal_on_open.emit()
+  
   close_button.pressed.connect(on_close_button_pressed)
   
   for i in range(MainController.categories.size()):
     var category = MainController.categories[i]
-    var new_category_button = category_button_scene.instantiate().initialise(category)
+    var new_category_button = category_button_scene.instantiate().initialise(category, close)
     
     var new_category_button_x
     if (i % 2 == 0):
@@ -23,4 +33,8 @@ func _ready() -> void:
     add_child(new_category_button)
 
 func on_close_button_pressed():
-  MainController.hide_category_picker()
+  close()
+  
+func close():
+  signal_on_close.emit()
+  queue_free()

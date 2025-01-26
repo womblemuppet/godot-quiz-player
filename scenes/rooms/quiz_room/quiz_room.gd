@@ -1,23 +1,44 @@
 extends Node
 
-signal answer_revealed
+signal categories_picker_opened
+signal categories_picker_closed
+signal answer_display_opened
+signal answer_display_closed
 
 var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
 var score_display_scene = preload("res://scenes/rooms/score_display.tscn")
+var category_picker_scene = preload("res://scenes/category_picker/category_picker.tscn")
+var category_picker
+var answer_display_scene = preload("res://scenes/rooms/answer_display.tscn")
+var answer_display
 
-@onready var question_label = $QuestionLabel
-@onready var info_label = $InfoColorRect/InfoLabel
-@onready var category_label = $CategoryLabel
+@onready var question_title_label = $QuestionTitleLabel
+@onready var question_label = $QuestionColorRect/QuestionLabel
+@onready var category_label = $CategoryColorRect/CategoryLabel
 @onready var player_list_color_rect = $PlayerListColorRect
 @onready var previous_question_button = $PreviousQuestionButton
 @onready var next_question_button = $NextQuestionButton
 @onready var timer_button = $TimerButton
-@onready var answer_label = $AnswerColorRect/AnswerLabel
+@onready var show_question_button = $ShowQuestionButton
+@onready var open_categories_button = $OpenCategoriesButton
+
+@onready var buttons = [
+  open_categories_button,
+  #previous_question_button,
+  #next_question_button,
+  #timer_button,
+  #show_question_button
+]
+
+
 
 func _ready() -> void:
   MainController.question_changed.connect(on_question_changed)
   MainController.category_changed.connect(on_category_changed)
-  self.answer_revealed.connect(on_answer_revealed)
+  answer_display_opened.connect(on_answer_display_opened)
+  categories_picker_closed.connect(on_categories_picker_closed)
+  
+  open_categories_button.pressed.connect(create_category_picker)
   
   for i in range(MainController.players.size()):
     var player = MainController.players[i]
@@ -27,11 +48,17 @@ func _ready() -> void:
       player_list_color_rect.get_position().y + 60
     )
     
+    var new_player_display_options = {
+      "position": new_player_display_position,
+      "player": player,
+      "answer_button_clickable": false
+    }
     var new_player_display = player_display_scene.instantiate()
     new_player_display.ready.connect(
       func():
-        new_player_display.initialise(new_player_display_position, player, false)
-        new_player_display.answer_button.pressed.connect(hit_buzzer)
+        new_player_display.initialise(new_player_display_options)
+        new_player_display.answer_button.pressed.connect(hit_buzzer.bind(player))
+        ##buttons.push_back(new_player_display.answer_button)
         new_player_display.set_scale(Vector2(0.75, 0.75))
     )
     
@@ -44,23 +71,85 @@ func _ready() -> void:
 
     var new_score_display = score_display_scene.instantiate()
     new_score_display.ready.connect(
-      func(): new_score_display.initialise(new_score_display_position, player)
+      func():
+        new_score_display.initialise(new_score_display_position, player)
+        ##buttons.push_back(new_score_display.buttons)
     )
     
     add_child(new_score_display)
 
+  for button in buttons:
+    button.disabled_handler.update_disabled(
+      { 
+        "answer_display_is_closed": true,
+        "categories_picker_is_closed": true
+      }
+    )
+        
+    answer_display_opened.connect(
+      func():
+        button.disabled_handler.update_disabled({ "answer_display_is_closed": false })
+    )
+    
+    answer_display_closed.connect(
+      func():
+        button.disabled_handler.update_disabled({ "answer_display_is_closed": true })
+    )
+    
+    categories_picker_opened.connect(
+      func():
+        button.disabled_handler.update_disabled({ "categories_picker_is_closed": false })
+    )
+    
+    categories_picker_closed.connect(
+      func():
+        button.disabled_handler.update_disabled({ "categories_picker_is_closed": true })
+    )
+    
+
 func on_question_changed(new_question):
-  answer_label.visible = false
-  answer_label.text = new_question.answer
-  question_label.text = new_question.title
-  info_label.text = new_question.info
+  question_title_label.text = new_question.title
+  question_label.question_text = new_question.info
+  question_label.reset()
 
 func on_category_changed(new_category):
   category_label.text = new_category.title
   
-func hit_buzzer():
-  answer_revealed.emit()
+func create_category_picker():
+  var new_category_picker = category_picker_scene.instantiate()
+  new_category_picker.ready.connect(
+    func(): new_category_picker.initialise(
+    {
+      "offset": Vector2(160, 140),
+      "signal_on_open": categories_picker_opened,
+      "signal_on_close": categories_picker_closed
+    }
+    )
+  )
+  
+  add_child(new_category_picker)
+  category_picker = new_category_picker
 
-func on_answer_revealed():
-  answer_label.visible = true
+func on_categories_picker_closed():
+  category_picker = null
+  
+func hit_buzzer(player):
   timer_button.timer.stop()
+  
+  answer_display = answer_display_scene.instantiate()
+  answer_display.ready.connect(
+    func(): answer_display.initialise(
+      {
+        "position": Vector2(120, 15),
+        "signal_on_close": answer_display_closed,
+        "question": MainController.current_question,
+        "player": player
+      }
+    )
+  )
+  add_child(answer_display)
+  answer_display_opened.emit()
+
+func on_answer_display_opened():
+  pass
+  # buttons

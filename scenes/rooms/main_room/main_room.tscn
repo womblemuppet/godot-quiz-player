@@ -16,49 +16,54 @@ theme = ExtResource("1_ypxv8")
 color = Color(0.93, 0.93, 0.93, 1)
 
 [node name="PlayerPicker" type="Node2D" parent="."]
-position = Vector2(65, 274)
+position = Vector2(86, 328)
 script = ExtResource("2_h52uo")
 
 [node name="ColorPanelContainer" type="PanelContainer" parent="PlayerPicker"]
 clip_contents = true
-offset_right = 549.0
-offset_bottom = 510.0
+offset_right = 556.0
+offset_bottom = 423.0
 theme = ExtResource("1_ypxv8")
 theme_override_styles/panel = ExtResource("3_8xowo")
+metadata/_edit_use_anchors_ = true
 
 [node name="NameTextEdit" type="TextEdit" parent="PlayerPicker"]
-offset_left = 280.0
-offset_top = 70.0
-offset_right = 530.0
-offset_bottom = 145.0
+offset_left = 277.0
+offset_top = 42.0
+offset_right = 527.0
+offset_bottom = 117.0
 theme = ExtResource("1_ypxv8")
 placeholder_text = "Name"
 context_menu_enabled = false
 middle_mouse_paste_enabled = false
+metadata/_edit_use_anchors_ = true
 
 [node name="AddButton" type="Button" parent="PlayerPicker"]
-offset_left = 25.0
-offset_top = 68.0
-offset_right = 250.0
-offset_bottom = 293.0
+offset_left = 372.0
+offset_top = 249.0
+offset_right = 522.0
+offset_bottom = 399.0
 theme = ExtResource("1_ypxv8")
 text = "+"
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorTextEdit" type="TextEdit" parent="PlayerPicker"]
-offset_left = 280.0
-offset_top = 160.0
-offset_right = 440.0
-offset_bottom = 235.0
+offset_left = 281.0
+offset_top = 131.0
+offset_right = 441.0
+offset_bottom = 206.0
 theme = ExtResource("1_ypxv8")
 placeholder_text = "Colour"
 editable = false
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorButton" type="Button" parent="PlayerPicker"]
-offset_left = 454.0
-offset_top = 160.0
-offset_right = 529.0
-offset_bottom = 235.0
+offset_left = 452.0
+offset_top = 132.0
+offset_right = 527.0
+offset_bottom = 207.0
 script = ExtResource("4_vhg0v")
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="PlayerPicker/ColorButton"]
 layout_mode = 0
@@ -67,15 +72,20 @@ offset_top = 5.0
 offset_right = 70.0
 offset_bottom = 70.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="PictureButton" type="Button" parent="PlayerPicker"]
-offset_left = 282.0
-offset_top = 254.0
-offset_right = 526.0
-offset_bottom = 475.0
+offset_left = 20.0
+offset_top = 41.0
+offset_right = 264.0
+offset_bottom = 261.0
 theme = ExtResource("1_ypxv8")
 theme_override_font_sizes/font_size = 32
 text = "Picture"
+metadata/_edit_use_anchors_ = true
+
+[node name="PictureButtonSprite2D" type="Sprite2D" parent="PlayerPicker/PictureButton"]
+position = Vector2(122, 110)
 
 [node name="Title" type="Label" parent="."]
 offset_left = 42.0
