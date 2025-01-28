@@ -70,9 +70,10 @@ func _ready() -> void:
     var new_score_display = score_display_scene.instantiate()
     new_score_display.ready.connect(
       func():
-        new_score_display.initialise(new_score_display_position, player)
+        new_score_display.initialise(new_score_display_position, player, answer_display_closed)
         buttons.append_array(new_score_display.buttons)
     )
+    
     
     add_child(new_score_display)
 
