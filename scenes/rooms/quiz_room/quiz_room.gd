@@ -24,12 +24,10 @@ var answer_display
 
 @onready var buttons = [
   open_categories_button,
-  #previous_question_button,
-  #next_question_button,
-  #timer_button,
-  #show_question_button
+  previous_question_button,
+  next_question_button,
+  show_question_button
 ]
-
 
 
 func _ready() -> void:
@@ -58,7 +56,7 @@ func _ready() -> void:
       func():
         new_player_display.initialise(new_player_display_options)
         new_player_display.answer_button.pressed.connect(hit_buzzer.bind(player))
-        ##buttons.push_back(new_player_display.answer_button)
+        buttons.push_back(new_player_display.answer_button)
         new_player_display.set_scale(Vector2(0.75, 0.75))
     )
     
@@ -73,7 +71,7 @@ func _ready() -> void:
     new_score_display.ready.connect(
       func():
         new_score_display.initialise(new_score_display_position, player)
-        ##buttons.push_back(new_score_display.buttons)
+        buttons.append_array(new_score_display.buttons)
     )
     
     add_child(new_score_display)
@@ -82,7 +80,8 @@ func _ready() -> void:
     button.disabled_handler.update_disabled(
       { 
         "answer_display_is_closed": true,
-        "categories_picker_is_closed": true
+        "categories_picker_is_closed": true,
+        "a_category_has_been_chosen": false
       }
     )
         
@@ -105,6 +104,13 @@ func _ready() -> void:
       func():
         button.disabled_handler.update_disabled({ "categories_picker_is_closed": true })
     )
+    
+    MainController.category_changed.connect(
+      func(_new_category):
+        button.disabled_handler.update_disabled({ "a_category_has_been_chosen": true })
+    )
+    
+  open_categories_button.disabled_handler.remove_check("a_category_has_been_chosen")
     
 
 func on_question_changed(new_question):

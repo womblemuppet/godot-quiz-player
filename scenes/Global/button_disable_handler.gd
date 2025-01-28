@@ -10,15 +10,14 @@ func initialise(button_arg):
 
 func update_disabled(updates):
   checks.merge(updates, true)
+  run_checks()
   
-  print("button: %s" % button)
-  print("incoming updates: %s" % updates)
-  print("checks: %s" % checks)
-
+func remove_check(key):
+  checks.erase(key)
+  run_checks()
+  
+func run_checks():
   if checks.is_empty():
     button.disabled = false
   else:
     button.disabled = checks.values().any( func(check): return !check )
-  
-  print("disabled = %s" % button.disabled)
-      

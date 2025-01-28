@@ -4,8 +4,6 @@ signal number_of_players_changed(new_number_of_players)
 signal question_changed(new_question)
 
 signal category_changed(new_category)
-signal category_picker_opening
-signal category_picker_closing
 
 signal question_revealed
 
@@ -66,7 +64,7 @@ func change_category(new_category):
   current_category = new_category
   category_changed.emit(new_category)
   change_question(new_category.questions[0])
-  
+
 func go_to_next_question():
   if current_question.number > current_category.questions.size():
     assert(false, "calling next question past array limit")
@@ -76,7 +74,7 @@ func go_to_next_question():
   var new_question = current_category.questions[new_index]
   change_question(new_question)
   question_revealed.emit()
-  
+
 func go_to_previous_question():
   if current_question.number < 1:
     assert(false, "calling previous question on 0")

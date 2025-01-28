@@ -44,7 +44,7 @@ func on_show_answer_button_pressed():
   answer_label.visible = true
   show_answer_button.disabled = true
   exit_button.disabled = false
-  answer_timer_display.color = Color.PALE_GREEN
+  answer_timer_display.stop(true)
   ## could flash exit button here
 
 func on_exit_button_pressed():

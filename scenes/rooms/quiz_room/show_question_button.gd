@@ -1,11 +1,13 @@
 extends Button
 
 var fading = false
+var disabled_handler
 
 func _ready() -> void:
-  disabled = true
   self.pressed.connect(on_show_question_button_pressed)
   MainController.category_changed.connect(on_category_changed)
+  
+  disabled_handler = ButtonDiableHandler.new().initialise(self)
   
 func _process(delta: float) -> void:
   if !fading:
@@ -19,10 +21,10 @@ func _process(delta: float) -> void:
 
 func on_show_question_button_pressed():
   fading = true
-  disabled = true
+  disabled_handler.update_disabled({ "is_opaque": false })
   MainController.question_revealed.emit()
   
 func on_category_changed(_new_category):
-  disabled = false
   fading = false
+  disabled_handler.update_disabled({ "is_opaque": true })
   set_modulate(Color(1,1,1,1))

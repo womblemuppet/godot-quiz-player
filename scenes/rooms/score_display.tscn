@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw8jns5kvnns8"]
+[gd_scene load_steps=4 format=3 uid="uid://cw8jns5kvnns8"]
 
 [ext_resource type="Script" path="res://scenes/rooms/score_display.gd" id="1_4qbud"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_shkey"]
+[ext_resource type="Script" path="res://scenes/global/basic_button.gd" id="3_kpaxv"]
 
 [node name="ScoreDisplay" type="Node2D"]
 script = ExtResource("1_4qbud")
@@ -28,6 +29,7 @@ offset_right = 52.0
 offset_bottom = 48.0
 theme = ExtResource("1_shkey")
 theme_override_font_sizes/font_size = 50
+script = ExtResource("3_kpaxv")
 
 [node name="PlusText" type="Label" parent="IncrementScoreButton"]
 layout_mode = 0
@@ -48,6 +50,7 @@ offset_right = 188.0
 offset_bottom = 48.0
 theme = ExtResource("1_shkey")
 theme_override_font_sizes/font_size = 50
+script = ExtResource("3_kpaxv")
 
 [node name="MinusText" type="Label" parent="DeincrementScoreButton"]
 layout_mode = 0
