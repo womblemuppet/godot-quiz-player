@@ -24,10 +24,10 @@ text = "REVEAL ANSWER"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 405.0
-offset_top = 166.0
-offset_right = 1282.0
-offset_bottom = 605.0
+offset_left = 708.0
+offset_top = 174.0
+offset_right = 1585.0
+offset_bottom = 613.0
 color = Color(1, 0.56, 0.56, 1)
 
 [node name="QuestionLabel" type="Label" parent="."]
@@ -40,12 +40,19 @@ theme = ExtResource("1_la7yq")
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 
+[node name="QuestionPictureTextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 157.0
+offset_right = 615.0
+offset_bottom = 632.0
+
 [node name="AnswerLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 439.0
-offset_top = 186.0
-offset_right = 1239.0
-offset_bottom = 577.0
+offset_left = 742.0
+offset_top = 194.0
+offset_right = 1179.0
+offset_bottom = 585.0
 theme = ExtResource("1_la7yq")
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1

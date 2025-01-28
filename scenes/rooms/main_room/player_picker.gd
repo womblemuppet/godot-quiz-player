@@ -37,7 +37,6 @@ func on_add_button_pressed():
     "color": color,
     "sprite": sprite
   }
-  ## if chosen sprite null, what do?
   
   var new_player = MainController.add_player(player_data)
   

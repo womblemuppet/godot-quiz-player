@@ -4,6 +4,7 @@ extends ColorRect
 @onready var exit_button = $ExitButton
 @onready var answer_label = $AnswerLabel
 @onready var question_label = $QuestionLabel
+@onready var question_picture_texture_rect = $QuestionPictureTextureRect
 @onready var answer_timer_display = $AnswerTimerDisplay
 
 var question
@@ -24,13 +25,14 @@ func initialise(options):
   player = options.player
   
   question_label.text = question.info
+  question_picture_texture_rect.texture = question.picture
   answer_label.text = question.answer
   
   var player_display_scene = preload("res://scenes/rooms/player_display.tscn")
   player_display = player_display_scene.instantiate()
   
   var new_player_display_options = {
-    "position": Vector2(175, 300),
+    "position": Vector2(175, 755),
     "player": player,
     "answer_button_clickable": true
   }
@@ -42,9 +44,16 @@ func initialise(options):
   
 func on_show_answer_button_pressed():
   answer_label.visible = true
+  
   show_answer_button.disabled = true
+  
   exit_button.disabled = false
+  
   answer_timer_display.stop(true)
+  
+  if question.answer_picture != null:
+    question_picture_texture_rect.texture = question.answer_picture
+  
   ## could flash exit button here
 
 func on_exit_button_pressed():

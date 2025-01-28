@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
     letters_typed = question_text.length
     typing = false
   else:
-    letters_typed += delta * 10
+    letters_typed += delta * 20
     text = question_text.substr(0, letters_typed)
   
 func reset():

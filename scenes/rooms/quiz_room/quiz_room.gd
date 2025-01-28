@@ -14,6 +14,7 @@ var answer_display
 
 @onready var question_title_label = $QuestionTitleLabel
 @onready var question_label = $QuestionColorRect/QuestionLabel
+@onready var question_picture_texture_rect = $QuestionColorRect/QuestionPictureTextureRect
 @onready var category_label = $CategoryColorRect/CategoryLabel
 @onready var player_list_color_rect = $PlayerListColorRect
 @onready var previous_question_button = $PreviousQuestionButton
@@ -33,7 +34,6 @@ var answer_display
 func _ready() -> void:
   MainController.question_changed.connect(on_question_changed)
   MainController.category_changed.connect(on_category_changed)
-  answer_display_opened.connect(on_answer_display_opened)
   categories_picker_closed.connect(on_categories_picker_closed)
   
   open_categories_button.pressed.connect(create_category_picker)
@@ -73,7 +73,6 @@ func _ready() -> void:
         new_score_display.initialise(new_score_display_position, player, answer_display_closed)
         buttons.append_array(new_score_display.buttons)
     )
-    
     
     add_child(new_score_display)
 
@@ -118,6 +117,8 @@ func on_question_changed(new_question):
   question_title_label.text = new_question.title
   question_label.question_text = new_question.info
   question_label.reset()
+  question_picture_texture_rect.texture = new_question.picture
+  question_picture_texture_rect.reset()
 
 func on_category_changed(new_category):
   category_label.text = new_category.title
@@ -126,11 +127,11 @@ func create_category_picker():
   var new_category_picker = category_picker_scene.instantiate()
   new_category_picker.ready.connect(
     func(): new_category_picker.initialise(
-    {
-      "offset": Vector2(160, 140),
-      "signal_on_open": categories_picker_opened,
-      "signal_on_close": categories_picker_closed
-    }
+      {
+        "offset": Vector2(160, 140),
+        "signal_on_open": categories_picker_opened,
+        "signal_on_close": categories_picker_closed
+      }
     )
   )
   
@@ -156,7 +157,3 @@ func hit_buzzer(player):
   )
   add_child(answer_display)
   answer_display_opened.emit()
-
-func on_answer_display_opened():
-  pass
-  # buttons

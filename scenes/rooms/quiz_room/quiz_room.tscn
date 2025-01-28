@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmdhx5rfwwwe0"]
+[gd_scene load_steps=12 format=3 uid="uid://dmdhx5rfwwwe0"]
 
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/quiz_room.gd" id="1_coemx"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="2_7olu8"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/question_label.gd" id="3_gf6b6"]
+[ext_resource type="Script" path="res://scenes/rooms/quiz_room/question_picture_texture_rect.gd" id="4_kcu15"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/previous_question_button.gd" id="4_rj35b"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/next_question_button.gd" id="5_a56pm"]
 [ext_resource type="Script" path="res://scenes/rooms/quiz_room/show_question_button.gd" id="6_4yqvr"]
@@ -52,6 +53,14 @@ offset_bottom = 646.0
 theme = ExtResource("2_7olu8")
 text = "-"
 script = ExtResource("3_gf6b6")
+
+[node name="QuestionPictureTextureRect" type="TextureRect" parent="QuestionColorRect"]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 178.0
+offset_right = 1069.0
+offset_bottom = 653.0
+script = ExtResource("4_kcu15")
 
 [node name="ShowQuestionButton" type="Button" parent="."]
 z_index = 7
