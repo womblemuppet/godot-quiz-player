@@ -5,6 +5,8 @@ var on_change_category
 
 func _ready() -> void:
   self.pressed.connect(on_category_button_pressed)
+  if category.get_has_been_opened():
+    set_modulate(Color.GRAY)
 
 func initialise(category_arg, on_change_category_arg):
   category = category_arg
@@ -15,4 +17,5 @@ func initialise(category_arg, on_change_category_arg):
 
 func on_category_button_pressed():
   MainController.change_category(category)
+  MainController.mark_category_as_opened(category)
   on_change_category.call()

@@ -17,11 +17,11 @@ func _ready() -> void:
   exit_button.disabled = true
   answer_label.visible = false
 
-func initialise(data):
-  position = data.position
-  question = data.question
-  signal_on_close = data.get("signal_on_close")
-  player = data.player
+func initialise(options):
+  position = options.position
+  question = options.question
+  signal_on_close = options.get("signal_on_close")
+  player = options.player
   
   question_label.text = question.info
   answer_label.text = question.answer

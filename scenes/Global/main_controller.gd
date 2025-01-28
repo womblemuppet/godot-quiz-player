@@ -64,6 +64,9 @@ func change_category(new_category):
   current_category = new_category
   category_changed.emit(new_category)
   change_question(new_category.questions[0])
+  
+func mark_category_as_opened(category):
+  category.set_has_been_opened(true)
 
 func go_to_next_question():
   if current_question.number > current_category.questions.size():

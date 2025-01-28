@@ -12,12 +12,12 @@ func _ready() -> void:
   answer_button.mouse_entered.connect(on_mouse_entered)
   answer_button.mouse_exited.connect(on_mouse_exited)
 
-func initialise(data):
+func initialise(options):
   set_as_top_level(true)
-  set_position(data.position)
-  player = data.player
-  answer_button_clickable = data.answer_button_clickable
-  answer_button.disabled = data.answer_button_clickable
+  set_position(options.position)
+  player = options.player
+  answer_button_clickable = options.answer_button_clickable
+  answer_button.disabled = options.answer_button_clickable
   
   name_label.text = player.player_name
   player_color_rect.color = player.color
