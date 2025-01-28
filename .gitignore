@@ -8,3 +8,5 @@ assets/categories/
 assets/COMIC.TTF
 assets/COMIC.TTF.import
 assets/avatars
+
+*.tmp
