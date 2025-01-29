@@ -15,9 +15,9 @@ script = ExtResource("1_6spgj")
 [node name="ShowAnswerButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 394.0
-offset_top = 745.0
+offset_top = 730.0
 offset_right = 1256.0
-offset_bottom = 961.0
+offset_bottom = 946.0
 theme = ExtResource("1_la7yq")
 theme_override_font_sizes/font_size = 60
 text = "REVEAL ANSWER"
@@ -33,12 +33,12 @@ color = Color(1, 0.56, 0.56, 1)
 [node name="QuestionLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 13.0
-offset_top = 28.0
-offset_right = 1665.0
-offset_bottom = 141.0
+offset_top = 15.0
+offset_right = 1258.0
+offset_bottom = 158.0
 theme = ExtResource("1_la7yq")
-theme_override_font_sizes/font_size = 80
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 2
 
 [node name="QuestionPictureTextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -51,18 +51,18 @@ offset_bottom = 632.0
 layout_mode = 0
 offset_left = 742.0
 offset_top = 194.0
-offset_right = 1179.0
+offset_right = 1564.0
 offset_bottom = 585.0
 theme = ExtResource("1_la7yq")
-theme_override_font_sizes/font_size = 80
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 2
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1397.0
-offset_top = 743.0
+offset_top = 730.0
 offset_right = 1625.0
-offset_bottom = 958.0
+offset_bottom = 945.0
 theme = ExtResource("1_la7yq")
 theme_override_font_sizes/font_size = 150
 text = "X"

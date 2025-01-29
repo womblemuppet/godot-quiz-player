@@ -52,7 +52,7 @@ func load_categories():
       var question = new_category.questions[i]
       question.number = i
 
-    categories.push_front(new_category)
+    categories.push_back(new_category)
 
   return
 

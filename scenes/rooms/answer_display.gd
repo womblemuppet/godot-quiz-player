@@ -32,7 +32,7 @@ func initialise(options):
   player_display = player_display_scene.instantiate()
   
   var new_player_display_options = {
-    "position": Vector2(175, 755),
+    "position": Vector2(175, 740),
     "player": player,
     "answer_button_clickable": true
   }
