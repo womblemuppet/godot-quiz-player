@@ -1,28 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw8jns5kvnns8"]
+[gd_scene load_steps=5 format=3 uid="uid://cw8jns5kvnns8"]
 
 [ext_resource type="Script" path="res://scenes/rooms/score_display.gd" id="1_4qbud"]
+[ext_resource type="Texture2D" uid="uid://b28ktbwnocgwj" path="res://assets/player_display_ragged.png" id="1_6k8dl"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_shkey"]
 [ext_resource type="Script" path="res://scenes/global/basic_button.gd" id="3_kpaxv"]
 
-[node name="ScoreDisplay" type="Node2D"]
+[node name="ScoreDisplay" type="TextureRect"]
+z_as_relative = false
+offset_right = 480.0
+offset_bottom = 220.0
+texture = ExtResource("1_6k8dl")
 script = ExtResource("1_4qbud")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 200.0
-offset_bottom = 100.0
-color = Color(0.92473, 0.9207, 0.93, 1)
+metadata/_edit_lock_ = true
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 81.0
-offset_right = 127.0
-offset_bottom = 105.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.621
+anchor_top = 0.0502727
+anchor_right = 0.621
+anchor_bottom = 0.0502727
+offset_left = -0.0802002
+offset_top = -0.0600624
+offset_right = 87.9198
+offset_bottom = 104.94
 theme = ExtResource("1_shkey")
 theme_override_font_sizes/font_size = 75
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="IncrementScoreButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4625
+anchor_top = 0.109091
+anchor_right = 0.504167
+anchor_bottom = 0.2
 offset_left = 12.0
 offset_top = 8.0
 offset_right = 52.0
@@ -30,9 +45,17 @@ offset_bottom = 48.0
 theme = ExtResource("1_shkey")
 theme_override_font_sizes/font_size = 50
 script = ExtResource("3_kpaxv")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
 
 [node name="PlusText" type="Label" parent="IncrementScoreButton"]
-layout_mode = 0
+modulate = Color(0.93, 0.870325, 0.4185, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.116667
+anchor_top = 0.166667
+anchor_right = 0.45
+anchor_bottom = 0.166667
 offset_left = 8.0
 offset_top = -20.0
 offset_right = 32.0
@@ -42,18 +65,33 @@ theme_override_font_sizes/font_size = 50
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="DeincrementScoreButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504167
+anchor_top = 0.109091
+anchor_right = 0.504167
+anchor_bottom = 0.109091
 offset_left = 148.0
 offset_top = 8.0
-offset_right = 188.0
-offset_bottom = 48.0
+offset_right = 208.0
+offset_bottom = 68.0
 theme = ExtResource("1_shkey")
 theme_override_font_sizes/font_size = 50
 script = ExtResource("3_kpaxv")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
 
 [node name="MinusText" type="Label" parent="DeincrementScoreButton"]
-layout_mode = 0
+modulate = Color(0.929412, 0.870588, 0.419608, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.15
+anchor_top = 0.2
+anchor_right = 0.466667
+anchor_bottom = 0.2
 offset_left = 10.0
 offset_top = -22.0
 offset_right = 31.0
@@ -63,6 +101,7 @@ theme_override_font_sizes/font_size = 50
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="BlinkTimer" type="Timer" parent="."]
 wait_time = 0.5

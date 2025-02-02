@@ -1,56 +1,57 @@
 [gd_resource type="Theme" load_steps=10 format=3 uid="uid://cpendnc1jo8it"]
 
-[ext_resource type="FontFile" uid="uid://bs72jee12ot1g" path="res://assets/COMIC.TTF" id="1_xqxb7"]
+[ext_resource type="FontFile" uid="uid://v6181cypux71" path="res://assets/STRIVE_IMPACT.OTF" id="2_eapid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4mtf"]
-bg_color = Color(0.890589, 0.89059, 0.89059, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+bg_color = Color(0.255657, 0.255659, 0.255659, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sg6yb"]
-bg_color = Color(0.88, 0.88, 0.88, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+bg_color = Color(0.662453, 0.662452, 0.662452, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_74bv2"]
-bg_color = Color(0.96, 0.96, 0.96, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+bg_color = Color(0.35907, 0.359069, 0.359069, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88j5o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8ffq"]
-bg_color = Color(0.95158, 0.95158, 0.95158, 1)
+bg_color = Color(0.212305, 0.212305, 0.212304, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylkxn"]
-bg_color = Color(0.95, 0.95, 0.95, 1)
+bg_color = Color(0.281185, 0.281187, 0.281188, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jufss"]
-bg_color = Color(0.95, 0.95, 0.95, 1)
+bg_color = Color(0.2195, 0.219501, 0.219502, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bepps"]
-bg_color = Color(0.95, 0.95, 0.95, 1)
+bg_color = Color(0.226706, 0.226708, 0.226708, 1)
 
 [resource]
-Button/colors/font_color = Color(0.88, 0.88, 0.88, 1)
+default_font = ExtResource("2_eapid")
+Button/colors/font_color = Color(0.877616, 0.877616, 0.877616, 1)
 Button/colors/font_disabled_color = Color(0.87, 0.87, 0.87, 1)
 Button/colors/font_hover_color = Color(0.95158, 0.95158, 0.95158, 1)
 Button/font_sizes/font_size = 100
-Button/fonts/font = ExtResource("1_xqxb7")
+Button/fonts/font = ExtResource("2_eapid")
 Button/styles/disabled = SubResource("StyleBoxFlat_u4mtf")
 Button/styles/hover = SubResource("StyleBoxFlat_sg6yb")
 Button/styles/normal = SubResource("StyleBoxFlat_74bv2")
@@ -63,15 +64,15 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 32
-Label/fonts/font = ExtResource("1_xqxb7")
+Label/fonts/font = ExtResource("2_eapid")
 Label/styles/normal = SubResource("StyleBoxEmpty_88j5o")
 LineEdit/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/font_sizes/font_size = 32
-LineEdit/fonts/font = ExtResource("1_xqxb7")
+LineEdit/fonts/font = ExtResource("2_eapid")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_j8ffq")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_ylkxn")
 TextEdit/colors/font_color = Color(1, 1, 1, 1)
 TextEdit/font_sizes/font_size = 36
-TextEdit/fonts/font = ExtResource("1_xqxb7")
+TextEdit/fonts/font = ExtResource("2_eapid")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_jufss")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_bepps")

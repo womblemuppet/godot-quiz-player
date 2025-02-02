@@ -1,9 +1,8 @@
-extends Node2D
+extends Panel
 
 var player
 var answer_button_clickable
 
-@onready var player_color_rect = $PlayerColorRect
 @onready var name_label = $NameLabel
 @onready var answer_button = $AnswerButton
 @onready var player_picture = $PlayerPicture
@@ -20,7 +19,7 @@ func initialise(options):
   answer_button.disabled = options.answer_button_clickable
   
   name_label.text = player.player_name
-  player_color_rect.color = player.color
+  set_self_modulate(player.color)
   player_picture.texture = player.sprite
   
   return self

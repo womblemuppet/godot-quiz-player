@@ -16,7 +16,7 @@ func on_question_revealed():
   is_revealing = true
   reset()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   ## again, there is probably a better way of doing this.
   
   if is_revealing && fade < 1:

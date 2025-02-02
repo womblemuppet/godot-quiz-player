@@ -11,3 +11,9 @@ assets/COMIC.TTF.import
 assets/avatars
 
 *.tmp
+assets/*.import
+assets/*.png
+assets/*.jpg
+assets/*.ttf
+assets/*.otf
+assets/*.aseprite

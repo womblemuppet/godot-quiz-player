@@ -19,7 +19,7 @@ var answer_display
 @onready var player_list_color_rect = $PlayerListColorRect
 @onready var previous_question_button = $PreviousQuestionButton
 @onready var next_question_button = $NextQuestionButton
-@onready var timer_button = $TimerButton
+@onready var question_timer_display = $QuestionTimerDisplay
 @onready var show_question_button = $ShowQuestionButton
 @onready var open_categories_button = $OpenCategoriesButton
 
@@ -41,41 +41,74 @@ func _ready() -> void:
   for i in range(MainController.players.size()):
     var player = MainController.players[i]
     
-    var new_player_display_position = Vector2(
-      player_list_color_rect.get_position().x + i * 275 + 30,
-      player_list_color_rect.get_position().y + 60
-    )
-    
-    var new_player_display_options = {
-      "position": new_player_display_position,
-      "player": player,
-      "answer_button_clickable": false
-    }
-    var new_player_display = player_display_scene.instantiate()
-    new_player_display.ready.connect(
-      func():
-        new_player_display.initialise(new_player_display_options)
-        new_player_display.answer_button.pressed.connect(hit_buzzer.bind(player))
-        buttons.push_back(new_player_display.answer_button)
-        new_player_display.set_scale(Vector2(0.75, 0.75))
-    )
-    
-    add_child(new_player_display)
-    
     var new_score_display_position = Vector2(
-      player_list_color_rect.get_position().x + i * 275 + 10,
-      player_list_color_rect.get_position().y - 50
+      player_list_color_rect.get_position().x + i * 480,
+      player_list_color_rect.get_position().y
     )
-
-    var new_score_display = score_display_scene.instantiate()
-    new_score_display.ready.connect(
-      func():
-        new_score_display.initialise(new_score_display_position, player, answer_display_closed)
-        buttons.append_array(new_score_display.buttons)
-    )
+    create_score_display(player, new_score_display_position)
     
-    add_child(new_score_display)
+    var new_player_display_position = Vector2(
+      player_list_color_rect.get_position().x + i * 480 + 30,
+      player_list_color_rect.get_position().y + 10
+    )
+    create_player_display(player, new_player_display_position)
 
+  setup_buttons()
+    
+
+func on_question_changed(new_question):
+  question_title_label.text = new_question.title
+  question_label.question_text = new_question.info
+  question_label.reset()
+  question_picture_texture_rect.texture = new_question.picture
+  question_picture_texture_rect.reset()
+
+func on_category_changed(new_category):
+  category_label.text = new_category.title
+  
+func create_score_display(player, position_arg):
+  var new_score_display = score_display_scene.instantiate()
+  new_score_display.ready.connect(
+    func():
+      new_score_display.initialise(position_arg, player, answer_display_closed)
+      buttons.append_array(new_score_display.buttons)
+  )
+
+  add_child(new_score_display)
+  
+func create_player_display(player, position_arg):
+  var new_player_display_options = {
+    "position": position_arg,
+    "player": player,
+    "answer_button_clickable": false
+  }
+  var new_player_display = player_display_scene.instantiate()
+  new_player_display.ready.connect(
+    func():
+      new_player_display.initialise(new_player_display_options)
+      new_player_display.answer_button.pressed.connect(hit_buzzer.bind(player))
+      buttons.push_back(new_player_display.answer_button)
+      new_player_display.set_scale(Vector2(0.75, 0.75))
+  )
+  
+  add_child(new_player_display)
+  
+func create_category_picker():
+  var new_category_picker = category_picker_scene.instantiate()
+  new_category_picker.ready.connect(
+    func(): new_category_picker.initialise(
+      {
+        "offset": Vector2(160, 140),
+        "signal_on_open": categories_picker_opened,
+        "signal_on_close": categories_picker_closed
+      }
+    )
+  )
+  
+  add_child(new_category_picker)
+  category_picker = new_category_picker
+  
+func setup_buttons():
   for button in buttons:
     button.disabled_handler.update_disabled(
       { 
@@ -111,38 +144,12 @@ func _ready() -> void:
     )
     
   open_categories_button.disabled_handler.remove_check("a_category_has_been_chosen")
-    
-
-func on_question_changed(new_question):
-  question_title_label.text = new_question.title
-  question_label.question_text = new_question.info
-  question_label.reset()
-  question_picture_texture_rect.texture = new_question.picture
-  question_picture_texture_rect.reset()
-
-func on_category_changed(new_category):
-  category_label.text = new_category.title
-  
-func create_category_picker():
-  var new_category_picker = category_picker_scene.instantiate()
-  new_category_picker.ready.connect(
-    func(): new_category_picker.initialise(
-      {
-        "offset": Vector2(160, 140),
-        "signal_on_open": categories_picker_opened,
-        "signal_on_close": categories_picker_closed
-      }
-    )
-  )
-  
-  add_child(new_category_picker)
-  category_picker = new_category_picker
 
 func on_categories_picker_closed():
   category_picker = null
   
 func hit_buzzer(player):
-  timer_button.timer.stop()
+  question_timer_display.timer.stop()
   
   answer_display = answer_display_scene.instantiate()
   answer_display.ready.connect(

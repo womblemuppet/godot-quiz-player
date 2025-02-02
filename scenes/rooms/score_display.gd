@@ -1,11 +1,11 @@
-extends Node2D
+extends TextureRect
 
 var player
+var button_color
 var is_blinking = false
 var blink_on = false
 
 @onready var score_label = $ScoreLabel
-@onready var color_rect = $ColorRect
 @onready var blink_timer = $BlinkTimer
 @onready var is_blinking_timer = $IsBlinkingTimer
 @onready var increment_score_button = $IncrementScoreButton
@@ -27,12 +27,24 @@ func initialise(position_arg, player_arg, answer_display_closed_arg):
   answer_display_closed_arg.connect(start_blinking)
   
   player = player_arg
-  color_rect.color = player.color.lerp(Color.BLACK, 0.2)
+  set_self_modulate(player.color.lerp(Color.BLACK, 0.2))
+  
+  button_color = player.color.lerp(Color.BLACK, 0.3)
+  
+  for button in buttons:
+    button.set_self_modulate(button_color)
   
   var new_button_style_box = StyleBoxFlat.new()
-  new_button_style_box.bg_color = player.color.lerp(Color.BLACK, 0.5)
+  new_button_style_box.bg_color = Color.SILVER
+  new_button_style_box.set_corner_radius_all(8)
   increment_score_button.add_theme_stylebox_override("normal", new_button_style_box)
   deincrement_score_button.add_theme_stylebox_override("normal", new_button_style_box)
+  
+  
+  #var new_button_disabled_style_box = StyleBoxFlat.new()
+  #new_button_disabled_style_box.bg_color = Color.BLACK
+  #increment_score_button.add_theme_stylebox_override("disabled", new_button_disabled_style_box)
+  #deincrement_score_button.add_theme_stylebox_override("disabled", new_button_disabled_style_box)
   
   return self
 
@@ -60,10 +72,10 @@ func on_blink_timer_timeout():
     
   if blink_on:
     for button in buttons:
-      button.set_modulate(Color.html("#e6f542CC"))
+      button.set_self_modulate(Color.GOLD)
   else:
     for button in buttons:
-      button.set_modulate(Color.WHITE)
+      button.set_self_modulate(button_color)
   
 func on_is_blinking_timer_timeout():
   is_blinking = false

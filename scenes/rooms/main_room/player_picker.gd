@@ -2,7 +2,7 @@ extends Node
 
 @onready var add_button = $AddButton
 @onready var color_button = $ColorButton
-@onready var name_text_edit = $NameTextEdit
+@onready var name_text_edit = $NameColorRect/NameLineEdit
 @onready var show_picture_picker_button = $PictureButton
 @onready var show_picture_picker_sprite_2d = $PictureButton/PictureButtonSprite2D
 
@@ -15,7 +15,7 @@ var chosen_sprite
 func _ready() -> void:
   add_button.pressed.connect(on_add_button_pressed)
   show_picture_picker_button.pressed.connect(on_show_picture_picker_pressed)
-  name_text_edit.text_changed.connect(check_form_validity)
+  name_text_edit.text_changed.connect(check_form_validity.unbind(1))
   
   check_form_validity()
   
@@ -28,7 +28,7 @@ func on_add_button_pressed():
   
   var sprite
   if chosen_sprite == null:
-    sprite = load("res://assets/avatars/no_av.png")
+    sprite = load("res://assets/no_av.png")
   else:
     sprite = chosen_sprite
   
@@ -40,12 +40,12 @@ func on_add_button_pressed():
   
   var new_player = MainController.add_player(player_data)
   
-  var new_player_width = DisplayServer.window_get_size().x * 0.8
-  var new_player_height = DisplayServer.window_get_size().y * 0.15 + (MainController.players.size() - 1) * 320
+  var new_player_x = DisplayServer.window_get_size().x * 0.855
+  var new_player_y = DisplayServer.window_get_size().y * 0.15 + (MainController.players.size() - 1) * 320
 
   var new_player_display = player_display_scene.instantiate()
   var new_player_display_options = {
-    "position": Vector2(new_player_width, new_player_height),
+    "position": Vector2(new_player_x, new_player_y),
     "player": new_player,
     "answer_button_clickable": true
   }

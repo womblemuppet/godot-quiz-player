@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal picture_chosen(new_picture)
 
@@ -10,7 +10,8 @@ var player_picker
 
 ## shouldn't load each time on _ready
 func _ready() -> void:
-  self.picture_chosen.connect(on_picture_chosen)
+  picture_chosen.connect(on_picture_chosen)
+  global_position += Vector2(-890, 0)
   
   for relative_file_path in DirAccess.get_files_at("res://assets/avatars/"):
     if relative_file_path.ends_with(".import"):
@@ -27,8 +28,16 @@ func _ready() -> void:
     new_picture_display.ready.connect( func(): new_picture_display.initialise(self, i) )
     
     new_picture_display.set_texture(sprite)
-    var x = self.position.x + floor(i / 2.0) * 200 + 20
-    var y = self.position.y + 20 + (fmod(i, 2) * 200)
+    var x = 20 + fmod(i, 4.0) * 200
+    
+    var y
+    if i < 4:
+      y = 100
+    elif i < 8:
+      y = 290
+    else:
+      y = 480
+
     new_picture_display.position = Vector2(x, y)
 
     add_child(new_picture_display)

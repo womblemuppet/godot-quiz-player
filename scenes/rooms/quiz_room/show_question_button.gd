@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
     fading = false
     set_modulate(Color(1,1,1,0))
   else:
-    set_modulate(lerp(get_modulate(), Color(1,1,1,0), delta * 2))
+    set_modulate(lerp(get_modulate(), Color(1,1,1,0), delta * 5))
 
 func on_show_question_button_pressed():
   fading = true

@@ -1,7 +1,7 @@
-extends Button
+extends ColorRect
 
 @onready var timer = $Timer
-var time_per_question = 15
+var time_per_question = 25
 
 func _ready() -> void:
   MainController.question_revealed.connect(on_question_revealed)
@@ -10,17 +10,24 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
   # is there a more efficient way of doing this than _process() ?
   if !timer.is_stopped():
+    queue_redraw()
+
     var time_left = round(timer.time_left)
-    text = str(time_left) 
     
     if time_left < 5:
       add_theme_color_override("font_color", Color.CRIMSON)
     else:
       add_theme_color_override("font_color", 140863)
       
+func _draw() -> void:
+  var time_left = round(timer.time_left)
+  for i in range(time_left):
+    var rect = Rect2(6 + i * 20, 6, 14, 44)
+    draw_rect(rect, Color.html("#f5dd58"), true)      
+
 func reset_timer():
   timer.stop()
-  text = str(time_per_question)
+  queue_redraw()
     
 func on_question_revealed():
   timer.start(time_per_question)
