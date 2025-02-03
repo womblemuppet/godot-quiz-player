@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func initialise(category_arg, on_change_category_arg):
   category = category_arg
-  text = category.title
+  text = category.title.to_upper()
   on_change_category = on_change_category_arg
   
   return self

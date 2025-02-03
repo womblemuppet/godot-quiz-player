@@ -32,14 +32,14 @@ func initialise(options):
   player_display = player_display_scene.instantiate()
   
   var new_player_display_options = {
-    "position": Vector2(175, 740),
+    "position": Vector2(140, 510),
     "player": player,
     "answer_button_clickable": true
   }
   
   player_display.ready.connect( func(): player_display.initialise(new_player_display_options) )
   player_display.z_as_relative = false
-  player_display.z_index = 20
+  player_display.z_index = 30
   add_child(player_display)
   
 func on_show_answer_button_pressed():

@@ -1,23 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfxs7e514solq"]
+[gd_scene load_steps=6 format=3 uid="uid://cfxs7e514solq"]
 
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_yftjw"]
+[ext_resource type="FontFile" uid="uid://cfdysy1yxhnnl" path="res://assets/BITING MY NAILS.TTF" id="2_asqmo"]
 [ext_resource type="Script" path="res://scenes/category_picker/category_button.gd" id="2_jgou4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru3tk"]
-bg_color = Color(0.471833, 0.163604, 0.160673, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[ext_resource type="StyleBox" uid="uid://bcdsjjor7eyaf" path="res://assets/curved_rectangle3.tres" id="3_grti5"]
+[ext_resource type="StyleBox" uid="uid://eens5511w246" path="res://assets/curved_rectangle3_hover.tres" id="3_xp6rf"]
 
 [node name="CategoryButton" type="Button"]
 z_index = 5
-offset_right = 380.0
-offset_bottom = 140.0
+offset_right = 400.0
+offset_bottom = 220.0
 theme = ExtResource("1_yftjw")
-theme_override_colors/font_color = Color(0.825183, 0.653625, 0.208115, 1)
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_ru3tk")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_asqmo")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = ExtResource("3_xp6rf")
+theme_override_styles/normal = ExtResource("3_grti5")
 text = "test"
 autowrap_mode = 2
 script = ExtResource("2_jgou4")

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1hs7inq2qgsk"]
+[gd_scene load_steps=8 format=3 uid="uid://b1hs7inq2qgsk"]
 
 [ext_resource type="Script" path="res://scenes/category_picker/category_picker.gd" id="1_1j57t"]
 [ext_resource type="Theme" uid="uid://cpendnc1jo8it" path="res://assets/theme.tres" id="1_n318b"]
-[ext_resource type="Texture2D" uid="uid://bnpoi23bb5ew0" path="res://assets/potbuster.png" id="2_eevai"]
+[ext_resource type="Texture2D" uid="uid://dkgth224oi4eb" path="res://assets/pot_outline1.png" id="2_biu7y"]
 [ext_resource type="Texture2D" uid="uid://joegurss3r57" path="res://assets/orange_rect.png" id="3_8dwut"]
 [ext_resource type="Texture2D" uid="uid://cn4bv64cxi7v7" path="res://assets/white_underline.png" id="5_2b5uk"]
+[ext_resource type="StyleBox" uid="uid://eens5511w246" path="res://assets/curved_rectangle3_hover.tres" id="5_rmjde"]
+[ext_resource type="StyleBox" uid="uid://bcdsjjor7eyaf" path="res://assets/curved_rectangle3.tres" id="6_epqfl"]
 
 [node name="CategoryPicker" type="CanvasLayer"]
 script = ExtResource("1_1j57t")
@@ -12,15 +14,19 @@ script = ExtResource("1_1j57t")
 [node name="BackgroundColorRect" type="ColorRect" parent="."]
 offset_right = 1600.0
 offset_bottom = 800.0
-color = Color(0.175619, 1.92824e-06, 0.122876, 1)
+color = Color(0, 0.443111, 0.328604, 1)
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
-self_modulate = Color(0.236431, 0.0993577, 0.216438, 1)
-offset_left = -27.0
-offset_top = -51.0
-offset_right = 1776.0
-offset_bottom = 820.0
-texture = ExtResource("2_eevai")
+modulate = Color(0.709333, 0.76, 0, 1)
+offset_left = 937.0
+offset_top = 166.0
+offset_right = 2182.0
+offset_bottom = 1050.0
+rotation = -0.0872665
+texture = ExtResource("2_biu7y")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
 
 [node name="TitleTextureRect" type="TextureRect" parent="."]
 offset_right = 1600.0
@@ -41,31 +47,41 @@ vertical_alignment = 1
 
 [node name="LeftPanelContainer" type="PanelContainer" parent="."]
 visible = false
-offset_left = 197.0
-offset_top = 212.0
-offset_right = 678.0
-offset_bottom = 709.0
+offset_left = 20.0
+offset_top = 177.0
+offset_right = 387.0
+offset_bottom = 522.0
+mouse_filter = 2
+
+[node name="MiddlePanelContainer" type="PanelContainer" parent="."]
+visible = false
+offset_left = 458.0
+offset_top = 178.0
+offset_right = 791.0
+offset_bottom = 520.0
 mouse_filter = 2
 
 [node name="RightPanelContainer" type="PanelContainer" parent="."]
 visible = false
-offset_left = 959.0
-offset_top = 210.0
-offset_right = 1438.0
-offset_bottom = 712.0
+offset_left = 903.0
+offset_top = 173.0
+offset_right = 1236.0
+offset_bottom = 523.0
 mouse_filter = 2
 
 [node name="CloseButton" type="Button" parent="."]
-offset_left = 19.0
-offset_top = 641.0
-offset_right = 173.0
-offset_bottom = 782.0
+offset_left = 6.0
+offset_top = 696.0
+offset_right = 98.0
+offset_bottom = 790.0
 theme = ExtResource("1_n318b")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = ExtResource("5_rmjde")
+theme_override_styles/normal = ExtResource("6_epqfl")
 text = "↩"
 
 [node name="TitleLineTextureRect" type="TextureRect" parent="."]
-offset_left = 2.0
 offset_top = 88.0
-offset_right = 1536.0
+offset_right = 1534.0
 offset_bottom = 138.0
 texture = ExtResource("5_2b5uk")
